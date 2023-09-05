@@ -11,5 +11,5 @@ def index(request):
     else:
         all_notes = Note.objects.all()
         notes_data = [{'title': note.title, 'content': note.content} for note in all_notes]
-        print(notes_data)
+        #print(notes_data)
         return render(request, 'notes/index.html', {'notes': notes_data})
