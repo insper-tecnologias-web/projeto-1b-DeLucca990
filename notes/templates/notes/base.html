@@ -1,12 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <title>Get-it</title>
+    <link rel="stylesheet" href="{% static 'notes/css/style.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
   </head>
 
   <body>
-    {% block content %} 
-    {% endblock %}
+    {% block content %} {% endblock %}
+    <script src="{% static 'notes/js/script.js' %}"></script>
   </body>
 </html>
