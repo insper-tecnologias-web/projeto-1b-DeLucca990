@@ -42,3 +42,6 @@ def update(request):
         return redirect('index')
     else:
         return redirect('index')
+
+def not_found(request):
+    return render(request, 'notes/404.html')
