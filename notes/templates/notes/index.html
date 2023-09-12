@@ -5,6 +5,8 @@
 <div class="appbar">
   <img src="{% static 'notes/img/logo-getit.png' %}" class="logo">
   <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+  <input type="checkbox" id="darkmode-toggle" class="input-dark"/>
+  <label for="darkmode-toggle"></label>
 </div>
 
 <main class="container">
@@ -28,11 +30,28 @@
     {% for note in notes %}
     <li class="sortable-card">
       <div class="card">
-        <h2 class="card-title">{{ note.title }}</h2>
-        <p class="card-content">{{ note.content }}</p>
+          <h3 class="card-title">{{ note.title }}</h3>
+          <div class="card-content">
+            <p>{{ note.content }}</p>
+            <form action="delete/" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="id" value="{{ note.id }}">
+              <button type="submit" class="delete-button">
+                  <img src="{% static 'notes/img/trash-icon.png' %}" alt="delete" class="delete" title="Excluir">
+              </button>
+            </form>
+            <form action="edit/" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="id" value="{{ note.id }}">
+              <button type="submit" class="edit-button">
+                <img src="{% static 'notes/img/edit-icon.png' %}" alt="edit" class="edit" title="Editar">
+              </button>
+            </form>
+          </div>
       </div>
     </li>
     {% endfor %}
   </ul>
+  <script type="text/javascript" src="{% static 'notes/js/script.js' %}"></script>
 </main>
 {% endblock %}
