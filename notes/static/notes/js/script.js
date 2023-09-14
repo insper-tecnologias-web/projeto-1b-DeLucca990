@@ -50,6 +50,7 @@ const form_card = document.querySelector(".form-card");
 const textarea = document.querySelector(".autoresize");
 const form_card_title = document.querySelector(".form-card-title");
 const appbar = document.querySelector(".appbar");
+const tag = document.querySelector(".form-card-tag");
 
 // Função para aplicar os estilos do modo noturno
 function applyDarkModeStyles() {
@@ -63,6 +64,11 @@ function applyDarkModeStyles() {
   btn.style.backgroundColor = "#d4aa02";
   try {
     btn2.style.backgroundColor = "#d4aa02";
+  }
+  catch (error) {
+  }
+  try {
+    tag.classList.add("dark-mode-background");
   }
   catch (error) {
 }}
@@ -79,6 +85,11 @@ function removeDarkModeStyles() {
   btn.style.backgroundColor = "#f7d736";
   try {
     btn2.style.backgroundColor = "#f7d736";
+  }
+  catch (error) {
+  }
+  try{
+    tag.classList.remove("dark-mode-background");
   }
   catch (error) {
 }}
