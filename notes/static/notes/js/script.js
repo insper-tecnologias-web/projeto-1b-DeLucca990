@@ -69,6 +69,7 @@ function applyDarkModeStyles() {
   }
   try {
     tag.classList.add("dark-mode-background");
+    tag.classList.add("dark-mode-text");
   }
   catch (error) {
 }}
@@ -90,6 +91,7 @@ function removeDarkModeStyles() {
   }
   try{
     tag.classList.remove("dark-mode-background");
+    tag.classList.remove("dark-mode-text");
   }
   catch (error) {
 }}
