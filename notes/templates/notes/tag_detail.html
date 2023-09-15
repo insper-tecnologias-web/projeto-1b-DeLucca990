@@ -1,15 +1,41 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Detalhes da Tag: {{ tag.name }}</title>
-</head>
-<body>
-    <h1>Detalhes da Tag: {{ tag.name }}</h1>
-    <h2>Anotações com esta Tag:</h2>
-    <ul>
-        {% for note in tag.notes.all %}
-            <li>{{ note.title }} - {{ note.content }}</li>
-        {% endfor %}
-    </ul>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Detalhes da Tag: {{ tag.name }}</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+            integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+            crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&family=Permanent+Marker&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{% static 'notes/css/tags.css' %}">
+    </head>
+    <body>
+        <div class="appbar">
+            <div class="left-content">
+                <img src="{% static 'notes/img/logo-getit.png' %}" class="logo">
+                <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+            </div>
+            <a href="{% url 'tags_list' %}">
+                <img src="{% static 'notes/img/tag.png' %}" alt="tag" class="img-tag" title="Tag">
+            </a>
+            <a href="{% url 'index' %}">
+                <img src="{% static 'notes/img/home.png' %}" alt="home" class="img-home2" title="Home">
+            </a>
+        </div>
+        <h1>Detalhes da Tag: {{ tag.name }}</h1>
+        <h2>Anotações com esta Tag:</h2>
+        <ul>
+            {% for note in tag.notes.all %}
+                <li>{{ note.title }} - {{ note.content }}</li>
+            {% endfor %}
+        </ul>
+    </body>
 </html>

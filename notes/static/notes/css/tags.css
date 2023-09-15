@@ -1,0 +1,43 @@
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0px;
+}
+
+.appbar{
+    background-color: #f7d736;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 10px 4px rgba(0, 0, 0, 0.6);  
+}
+
+.left-content {
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    width: 5%;
+    height: auto;
+    margin-right: 10px;
+}
+
+.img-tag{
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.img-home{
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+}
+.img-home2{
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+}
