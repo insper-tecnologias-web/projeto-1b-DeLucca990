@@ -19,10 +19,10 @@
     </head>
     <body>
         <div class="appbar">
-            <div class="left-content">
-                <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" alt="GetIt Logo">
-                <span class="subtitle">Como o Post-it, mas com outro verbo</span>
-            </div>
+            <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" alt="GetIt Logo">
+            <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+            <input type="checkbox" id="darkmode-toggle" class="input-dark"/>
+            <label for="darkmode-toggle"></label>
             <a href="{% url 'tags_list' %}">
                 <img src="{% static 'notes/img/back.png' %}" alt="tag" class="img-tag" title="Lista de Tags">
             </a>
@@ -40,5 +40,6 @@
                 {% endfor %}
             </ul>
         </div>
+        <script type="text/javascript" src="{% static 'notes/js/tag_detail.js' %}"></script>
     </body>
 </html>

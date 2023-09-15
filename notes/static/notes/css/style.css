@@ -304,13 +304,13 @@ body {
   list-style: none;
 }
 
-/*Adicionando Dark Mode*/
-
 .img-tag{
   width: 25px;
   height: 25px;
   margin-left: 40px;
 }
+
+/*Adicionando Dark Mode*/
 
 label {
 	width:50px;
