@@ -21,26 +21,12 @@ def index(request):
         notes_data = [{'title': note.title, 'content': note.content, 'id': note.id} for note in all_notes]
         return render(request, 'notes/index.html', {'notes': notes_data, 'tags': tags})
 
-def delete(request):
-    if request.method == 'POST':
-        note_id = request.POST.get('id')
-        note = Note.objects.get(id=note_id)
-        # Obtém a tag associada à nota
-        tags = note.tags.all()
-
-        note.delete()
-
-        for tag in tags:
-            # Verifica se a tag não está associada a mais nenhuma anotação
-            if tag.notes.count() == 0:
-                tag.delete()
-        return redirect('index')
-    else:
-        return redirect('index')
-
 def edit(request):
     if request.method == 'POST':
         note_id = request.POST.get('id')
+        note = Note.objects.get(id=note_id)
+        return render(request, 'notes/edit.html', {'note': note})
+    else:
         note = Note.objects.get(id=note_id)
         return render(request, 'notes/edit.html', {'note': note})
 
@@ -49,10 +35,44 @@ def update(request):
         note_id = request.POST.get('id')
         title = request.POST.get('titulo')
         content = request.POST.get('detalhes')
+        new_tag_name = request.POST.get('tag') 
         note = Note.objects.get(id=note_id)
         note.title = title
         note.content = content
+        # Obtém a tag associada à nota
+        tag = note.tags.first()
+
+        # Verifica se o nome da tag foi atualizado
+        if tag.name != new_tag_name:
+            # Tenta encontrar uma tag com o novo nome
+            new_tag, created = Tag.objects.get_or_create(name=new_tag_name)
+            # Remove a nota da tag antiga
+            tag.notes.remove(note)
+            # Adiciona a nota à nova tag
+            new_tag.notes.add(note)
+            new_tag.save()
+
+            # Verifica se a tag antiga não está associada a mais nenhuma nota
+            if tag.notes.count() == 0:
+                tag.delete()
         note.save()
+        return redirect('index')
+    else:
+        return redirect('index')
+
+def delete(request):
+    if request.method == 'POST':
+        note_id = request.POST.get('id')
+        note = Note.objects.get(id=note_id)
+        # Obtém a tag associada à nota
+        tags = note.tags.all()
+
+        for tag in tags:
+            # Verifica se a tag não está associada a mais nenhuma anotação
+            if tag.notes.exclude(id=note_id).count() == 0:
+                tag.delete()
+
+        note.delete()
         return redirect('index')
     else:
         return redirect('index')

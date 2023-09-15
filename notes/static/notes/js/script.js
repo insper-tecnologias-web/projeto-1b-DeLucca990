@@ -44,10 +44,9 @@ try {
 // Adicionando Dark Mode
 const darkModeToggle = document.getElementById("darkmode-toggle");
 const background = document.querySelector("body");
-const btn = document.querySelector(".btn");
-const btn2 = document.querySelector(".btn2");
+const btn = document.querySelectorAll(".btn");
 const form_card = document.querySelector(".form-card");
-const textarea = document.querySelector(".autoresize");
+const textarea = document.querySelectorAll(".autoresize");
 const form_card_title = document.querySelector(".form-card-title");
 const appbar = document.querySelector(".appbar");
 const tag = document.querySelector(".form-card-tag");
@@ -56,14 +55,16 @@ const tag = document.querySelector(".form-card-tag");
 function applyDarkModeStyles() {
   background.classList.add("dark-mode-background");
   form_card.classList.add("dark-mode-background");
-  textarea.classList.add("dark-mode-background");
+  textarea[0].classList.add("dark-mode-background");
   form_card_title.classList.add("dark-mode-background");
-  textarea.classList.add("dark-mode-text");
+  textarea[0].classList.add("dark-mode-text");
   form_card_title.classList.add("dark-mode-text");
   appbar.style.backgroundColor = "#d4aa02";
-  btn.style.backgroundColor = "#d4aa02";
+  btn[0].style.backgroundColor = "#d4aa02";
   try {
-    btn2.style.backgroundColor = "#d4aa02";
+    btn[1].style.backgroundColor = "#d4aa02";
+    textarea[1].classList.add("dark-mode-background");
+    textarea[1].classList.add("dark-mode-text");
   }
   catch (error) {
   }
@@ -78,14 +79,16 @@ function applyDarkModeStyles() {
 function removeDarkModeStyles() {
   background.classList.remove("dark-mode-background");
   form_card.classList.remove("dark-mode-background");
-  textarea.classList.remove("dark-mode-background");
+  textarea[0].classList.remove("dark-mode-background");
   form_card_title.classList.remove("dark-mode-background");
-  textarea.classList.remove("dark-mode-text");
+  textarea[0].classList.remove("dark-mode-text");
   form_card_title.classList.remove("dark-mode-text");
   appbar.style.backgroundColor = "#f7d736";
-  btn.style.backgroundColor = "#f7d736";
+  btn[0].style.backgroundColor = "#f7d736";
   try {
-    btn2.style.backgroundColor = "#f7d736";
+    btn[1].style.backgroundColor = "#f7d736";
+    textarea[1].classList.remove("dark-mode-background");
+    textarea[1].classList.remove("dark-mode-text");
   }
   catch (error) {
   }

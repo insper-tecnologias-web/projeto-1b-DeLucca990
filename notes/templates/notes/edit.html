@@ -27,22 +27,13 @@
     </div>
     <main class="container">
         <form class="form-card" method="post" action="update/">
-        {% csrf_token %}
-        <input type="hidden" name="id" value="{{ note.id }}">
-        <input
-            class="form-card-title"
-            type="text"
-            name="titulo"
-            placeholder="Titulo"
-            value="{{ note.title }}"
-        />
-        <textarea
-            class="autoresize"
-            name="detalhes"
-            placeholder="Digite o conteúdo..."
-        >{{ note.content }}</textarea>
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ note.id }}">
+            <input class="form-card-title" type="text" name="titulo" placeholder="Titulo" value="{{ note.title }}">
+            <textarea class="autoresize" name="detalhes" placeholder="Digite o conteúdo...">{{ note.content }}</textarea>
+            <input class="autoresize" type="text" name="tag" placeholder="Digite uma Tag" value="{{ note.tags.first.name }}">
             <button class="btn" type="submit">Atualizar</button>
-            <button class="btn2" type="button" onclick="window.location.href='/'">Cancelar</button>
+            <button class="btn" type="button" onclick="window.location.href='/'">Cancelar</button>
         </form>
     </main>
     <script type="text/javascript" src="{% static 'notes/js/script.js' %}"></script>
