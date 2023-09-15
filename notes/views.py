@@ -8,17 +8,19 @@ def index(request):
         title = request.POST.get('titulo')
         content = request.POST.get('detalhes')
         id = request.POST.get('id')
-        tag_name = request.POST.get('tag')
+        tag_names = request.POST.get('tag').split(',')
         # Verifique se a tag já existe no banco de dados
-        tag, created = Tag.objects.get_or_create(name=tag_name)
         note = Note.objects.create(title=title, content=content, id=id)
-        note.tags.add(tag)  # Associe a anotação à tag
+        # Associar as tags ao cartão
+        for tag_name in tag_names:
+            tag, created = Tag.objects.get_or_create(name=tag_name.strip())
+            note.tags.add(tag)
         note.save()
         return redirect('index')
     else:
         all_notes = Note.objects.all()
         tags = Tag.objects.all()
-        notes_data = [{'title': note.title, 'content': note.content, 'id': note.id} for note in all_notes]
+        notes_data = [{'title': note.title, 'content': note.content, 'id': note.id, 'tags': note.tags.all()} for note in all_notes]
         return render(request, 'notes/index.html', {'notes': notes_data, 'tags': tags})
 
 def edit(request):
