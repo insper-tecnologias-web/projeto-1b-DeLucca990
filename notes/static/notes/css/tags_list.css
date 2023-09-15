@@ -41,11 +41,9 @@ h1 {
     text-align: center; /* Centraliza o título */
     margin: 20px 0; /* Espaçamento superior e inferior */
     font-size: 2rem; /* Tamanho da fonte maior */
-    color: #000000; /* Cor do texto mais escura */
+    font-family: "Permanent Marker", cursive;
     text-transform: uppercase; /* Transforma o texto em maiúsculas */
     letter-spacing: 2px; /* Espaçamento entre letras */
-    font-weight: bold; /* Texto em negrito */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
 a {

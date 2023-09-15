@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Note, Tag
 
+# Para ativar a venv, rode no cmd: env\Scripts\activate.bat
+
 def index(request):
     if request.method == 'POST':
         title = request.POST.get('titulo')
