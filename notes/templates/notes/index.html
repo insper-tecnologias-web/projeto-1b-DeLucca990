@@ -23,11 +23,12 @@
       name="detalhes"
       placeholder="Digite o conteúdo..."
     ></textarea>
-    <textarea
-    class="form-card-tag"
-    name="tag"
-    placeholder="#Digite uma Tag"
-    ></textarea>
+    <input
+      class="form-card-tag"
+      type="text"
+      name="tag" 
+      placeholder="Digite uma Tag"
+    />
     <button class="btn" type="submit">Criar</button>
   </form>
 
@@ -38,7 +39,9 @@
           <h3 class="card-title">{{ note.title }}</h3>
           <div class="card-content">
             <p>{{ note.content }}</p>
-            <p class="tag">#{{ note.tag }}</p>
+            {% for tag in note.tags.all %}
+              <p class="tag">#{{ tag.name }}</p>
+            {% endfor %}
             <form action="delete/" method="post">
               {% csrf_token %}
               <input type="hidden" name="id" value="{{ note.id }}">

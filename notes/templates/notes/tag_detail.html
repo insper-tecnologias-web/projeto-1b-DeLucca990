@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalhes da Tag: {{ tag.name }}</title>
+</head>
+<body>
+    <h1>Detalhes da Tag: {{ tag.name }}</h1>
+    <h2>Anotações com esta Tag:</h2>
+    <ul>
+        {% for note in tag.notes.all %}
+            <li>{{ note.title }} - {{ note.content }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

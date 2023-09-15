@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tags</title>
+</head>
+<body>
+    <h1>Lista de Tags</h1>
+    <ul>
+        {% for tag in tags %}
+            <li><a href="{% url 'tag_detail' tag.id %}">{{ tag.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
