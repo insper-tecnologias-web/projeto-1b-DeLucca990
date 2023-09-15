@@ -1,0 +1,84 @@
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0px;
+}
+
+.appbar{
+    background-color: #f7d736;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 10px 4px rgba(0, 0, 0, 0.6);  
+}
+
+.left-content {
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    width: 5%;
+    height: auto;
+    margin-right: 10px;
+}
+
+.img-tag{
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.img-home{
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+}
+
+h1 {
+    text-align: center; /* Centraliza o título */
+    margin: 20px 0; /* Espaçamento superior e inferior */
+    font-size: 2rem; /* Tamanho da fonte maior */
+    color: #000000; /* Cor do texto mais escura */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    letter-spacing: 2px; /* Espaçamento entre letras */
+    font-weight: bold; /* Texto em negrito */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+a {
+    text-decoration: none; /* Remove sublinhado padrão */
+    transition: color 0.3s; /* Efeito de transição suave */
+}
+
+a:hover {
+    color: #0303a9; /* Cor do link ao passar o mouse */
+}
+
+ul {
+    list-style: none; /* Remove os marcadores de lista padrão */
+    padding: 0;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que as tags fluam para a próxima linha */
+    justify-content: center; /* Centraliza as tags */
+}
+
+li {
+    margin: 10px; /* Espaçamento entre os itens */
+}
+
+li a {
+    background-color: #f7d736; /* Cor de fundo azul */
+    color: #000000; /* Cor do texto branco */
+    padding: 10px 20px; /* Espaçamento interno */
+    border-radius: 5px; /* Cantos arredondados */
+    text-decoration: none;
+    transition: background-color 0.3s; /* Efeito de transição suave */
+}
+
+li a:hover {
+    background-color: #f7d736; /* Cor de fundo ao passar o mouse */
+}

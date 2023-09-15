@@ -15,27 +15,30 @@
             href="https://fonts.googleapis.com/css2?family=Roboto&family=Permanent+Marker&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="{% static 'notes/css/tags.css' %}">
+        <link rel="stylesheet" href="{% static 'notes/css/tag_detail.css' %}">
     </head>
     <body>
         <div class="appbar">
             <div class="left-content">
-                <img src="{% static 'notes/img/logo-getit.png' %}" class="logo">
+                <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" alt="GetIt Logo">
                 <span class="subtitle">Como o Post-it, mas com outro verbo</span>
             </div>
             <a href="{% url 'tags_list' %}">
-                <img src="{% static 'notes/img/tag.png' %}" alt="tag" class="img-tag" title="Tag">
+                <img src="{% static 'notes/img/back.png' %}" alt="tag" class="img-tag" title="Lista de Tags">
             </a>
             <a href="{% url 'index' %}">
-                <img src="{% static 'notes/img/home.png' %}" alt="home" class="img-home2" title="Home">
+                <img src="{% static 'notes/img/home.png' %}" alt="home" class="img-home" title="Home">
             </a>
+            </div>
         </div>
-        <h1>Detalhes da Tag: {{ tag.name }}</h1>
-        <h2>Anotações com esta Tag:</h2>
-        <ul>
-            {% for note in tag.notes.all %}
-                <li>{{ note.title }} - {{ note.content }}</li>
-            {% endfor %}
-        </ul>
+        <div class="content">
+            <h1>Nome da Tag: {{ tag.name }}</h1>
+            <h2>Anotações com esta Tag:</h2>
+            <ul class="notes-list">
+                {% for note in tag.notes.all %}
+                    <li><strong>{{ note.title }}</strong> - {{ note.content }}</li>
+                {% endfor %}
+            </ul>
+        </div>
     </body>
 </html>
