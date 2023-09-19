@@ -1,1 +1,11 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/ix0TCuMq)
+# Projeto 1B TecWeb
+## Site Hospedado no Railway:
+https://web-production-cf29.up.railway.app/
+
+## Funcionalidades:
+Foi implementada a funcionalidade de mover os cards e o dark mode em todas as páginas. Além disso, a aplicação está com a relação Many to Many entre cards e tags.  
+
+## Agradecimentos:
+- Professora Bárbara Tieko
+
+©Insper, 4° Semestre Engenharia da Computação, Tecnologias Web.
