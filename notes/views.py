@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Note, Tag
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.http import Http404
+from .serializers import NoteSerializer
+
 # Para ativar a venv, rode no cmd: env\Scripts\activate.bat
 
 def index(request):
@@ -89,3 +94,25 @@ def tag_detail(request, tag_id):
 
 def not_found(request):
     return render(request, 'notes/404.html')
+
+@api_view(['GET', 'POST'])
+def api_note(request):
+    try:
+        notes = Note.objects.all()
+    except Note.DoesNotExist:
+        raise Http404()
+    
+    # Ao receber uma requisição GET ela deve devolver a lista de todas as anotações
+    if request.method == 'GET':
+        serialized_note = NoteSerializer(notes, many=True)
+        return Response(serialized_note.data)
+    # Ao receber um POST ela deve criar uma nova anotação e devolver a lista de todas as anotações incluindo a nova.
+    elif request.method == 'POST':
+        serialized_note = NoteSerializer(data=request.data)
+        if serialized_note.is_valid():
+            serialized_note.save()
+            notes = Note.objects.all()
+            serialized_notes = NoteSerializer(notes, many=True)
+            return Response(serialized_notes.data)
+    
+    return Response(serialized_note.errors, status=400)

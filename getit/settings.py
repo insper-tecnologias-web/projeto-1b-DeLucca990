@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+7p=)=szu)6(6u)1)=2rem7vtn)r&c#%5syya6@c$l_va6w4@9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['web-production-cf29.up.railway.app','localhost', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://web-production-cf29.up.railway.app']
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -77,19 +78,19 @@ WSGI_APPLICATION = 'getit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}'''
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres:eGLS4TfYK6jwdt1wmVow@containers-us-west-95.railway.app:7043/railway',
-        conn_max_age=600,
-        ssl_require=not DEBUG
-    )
 }
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='postgresql://postgres:eGLS4TfYK6jwdt1wmVow@containers-us-west-95.railway.app:7043/railway',
+#         conn_max_age=600,
+#         ssl_require=not DEBUG
+#     )
+# }
 
 
 # Password validation
